@@ -1,0 +1,104 @@
+package com.example.project_semester_4;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+
+import android.os.Bundle;
+
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+
+public class dashboard extends AppCompatActivity {
+
+    //recycleview
+    private RecyclerView recyclerView;
+    private adapter_tagihan adapterTagihan;
+    private ArrayList<tagihan> tagihanArrayList;
+
+    AutoCompleteTextView autoCompleteTextView;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_dashboard);
+
+        //toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Hai Farhan");
+
+
+        //dropdown
+        autoCompleteTextView = findViewById(R.id.AutoCompleteTextview);
+
+        //array daftar bulan
+        String[] Subjects = new String[]{"Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"};
+
+        //membuat adapter array dan berikan parameter yang diperlukan
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.dropdown_dashboard, Subjects);
+        autoCompleteTextView.setAdapter(adapter);
+
+        //untuk mendapatkan nilai yang dipilih ketika klik item
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), "" + autoCompleteTextView.getText().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        //batas akhir dropdown
+
+        //recycleview
+        String jsonData = "[{'name':'Pembayaran 1'}," + "{'name': 'Pembayaran 2'}," + "{'name': 'Pembayaran 3'}," + "{'name': 'Pembayaran 4'}," + "{'name': 'Pembayaran 5'}," +
+                "{'name': 'Pembayaran 6'}," + "{'name': 'Pembayaran 7'}," + "{'name': 'Pembayaran 8'}," + "{'name': 'Pembayaran 9'}," + "{'name': 'Pembayaran 10'}," + "{'name': 'Pembayaran 11'}," +
+                "{'name': 'Pembayaran 12'}," + "{'name': 'Pembayaran 13'}," + "{'name': 'Pembayaran 14'}," + "{'name': 'Pembayaran 15'}," + "{'name': 'Pembayaran 16'}]";
+
+
+        setData(jsonData);
+
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        adapterTagihan = new adapter_tagihan(tagihanArrayList);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(dashboard.this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapterTagihan);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar_menu, menu);
+        return  true;
+    }
+
+    void setData(String jsonString){
+        try {
+            JSONArray jsonArray = new JSONArray(jsonString);
+            tagihanArrayList = new ArrayList<>();
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                tagihan player = new tagihan(jsonObject.getString("name"));
+
+                tagihanArrayList.add(player);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+}
