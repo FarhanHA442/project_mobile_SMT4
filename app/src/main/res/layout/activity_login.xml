@@ -49,6 +49,8 @@
                 android:id="@+id/username_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:hintTextColor="@color/black"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp">
 
@@ -72,6 +74,8 @@
                 android:id="@+id/password_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:hintTextColor="@color/black"
                 app:passwordToggleEnabled="true"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp">

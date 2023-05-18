@@ -6,12 +6,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -36,6 +39,13 @@ public class dashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        // Set the status bar to transparent
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.BLACK);
+        }
 
         //toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -91,9 +101,9 @@ public class dashboard extends AppCompatActivity {
             tagihanArrayList = new ArrayList<>();
             for(int i=0; i<jsonArray.length(); i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                tagihan player = new tagihan(jsonObject.getString("name"));
+                tagihan murid = new tagihan(jsonObject.getString("name"));
 
-                tagihanArrayList.add(player);
+                tagihanArrayList.add(murid);
             }
 
         } catch (JSONException e) {
