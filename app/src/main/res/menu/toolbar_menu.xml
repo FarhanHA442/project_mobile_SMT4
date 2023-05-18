@@ -4,7 +4,7 @@
     tools:context=".dashboard">
 
     <item
-        android:id="@+id/edit"
+        android:id="@+id/edit_password"
         android:orderInCategory="100"
         android:title="Edit Password"
         app:showAsAction="never">

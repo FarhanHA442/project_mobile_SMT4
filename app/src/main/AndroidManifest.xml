@@ -12,13 +12,16 @@
         android:theme="@style/Theme.Project_Semester_4"
         tools:targetApi="31">
         <activity
+            android:name=".edit_password"
+            android:exported="false" />
+        <activity
             android:name=".dashboard"
             android:exported="true"
-            android:theme="@style/Theme.Project_Semester_4.NoActionBar2"/>
+            android:theme="@style/Theme.Project_Semester_4.NoActionBar2" />
         <activity
             android:name=".login"
             android:exported="true"
-            android:theme="@style/Theme.Project_Semester_4.NoActionBar2"/>
+            android:theme="@style/Theme.Project_Semester_4.NoActionBar2" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
