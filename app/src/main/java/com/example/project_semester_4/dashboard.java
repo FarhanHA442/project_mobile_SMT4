@@ -1,17 +1,21 @@
 package com.example.project_semester_4;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -50,7 +54,7 @@ public class dashboard extends AppCompatActivity {
         //toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Hai Farhan");
+        getSupportActionBar().setTitle("");
 
 
         //dropdown
@@ -110,5 +114,22 @@ public class dashboard extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.edit_password){
+            Intent intent = new Intent(dashboard.this, edit_password.class);
+            startActivity(intent);
+            return true;
+        }
+        if (id == R.id.exit){
+            // Menghapus Status login dan kembali ke Login Activity
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

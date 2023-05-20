@@ -21,7 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="22dp"
-        android:layout_marginTop="24dp"
         android:layout_marginRight="110dp"
         android:text="Hai Farhan!"
         android:textColor="@color/white"
