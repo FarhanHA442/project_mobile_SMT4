@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Project_Semester_4</string>
     <string name="select">Select Item</string>
+    <string name="buttonKirim">KIRIM</string>
+    <string name="btnCamera">Pilih Dokumen Pembayaran</string>
+    <string name="judulPembayaran">Uang Makan</string>
 </resources>
