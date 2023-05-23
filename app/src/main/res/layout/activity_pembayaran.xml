@@ -20,11 +20,12 @@
         android:id="@+id/Judul"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Uang Makan"
+        android:fontFamily="@font/alatsi"
+        android:text="@string/judulPembayaran"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="36sp"
-        android:textStyle="bold"/>
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCamera"
@@ -32,7 +33,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="21dp"
         android:background="@drawable/button_2"
-        android:text="Pilih Dokumen Pembayaran"
+        android:text="@string/btnCamera"
         android:textColor="@color/white"
         android:textSize="15sp" />
 
@@ -44,14 +45,15 @@
         android:id="@+id/imgGallery"/>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/kirimButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:id="@+id/kirimButton"
         android:layout_marginTop="20dp"
         android:background="@drawable/button_2"
-        android:text="KIRIM"
-        android:textSize="20sp"
+        android:fontFamily="@font/alata"
+        android:text="@string/buttonKirim"
         android:textColor="@color/white"
-        android:textStyle="bold"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 </LinearLayout>
