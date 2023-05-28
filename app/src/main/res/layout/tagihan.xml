@@ -33,11 +33,11 @@
                 android:id="@+id/bayar_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_2"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="5dp"
-                android:textColor="@android:color/white"
-                android:text="BAYAR"/>
+                android:background="@drawable/button_2"
+                android:text="BAYAR"
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
 

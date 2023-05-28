@@ -1,20 +1,21 @@
 package com.example.project_semester_4;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.example.project_semester_4.R;
 import com.google.android.material.snackbar.Snackbar;
 
 public class Pembayaran extends AppCompatActivity {
@@ -27,12 +28,19 @@ public class Pembayaran extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pembayaran);
 
+        // Set the status bar to transparent
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.BLACK);
+        }
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Button kirimButton = findViewById(R.id.kirimButton);
+        Button kirimButton = findViewById(R.id.kirim_Button);
         kirimButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,7 +50,7 @@ public class Pembayaran extends AppCompatActivity {
         });
 
         imgGallery = findViewById(R.id.imgGallery);
-        Button btnGallery = findViewById(R.id.btnCamera);
+        Button btnGallery = findViewById(R.id.btn_Camera);
 
         btnGallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,4 +73,17 @@ public class Pembayaran extends AppCompatActivity {
             }
         }
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }
