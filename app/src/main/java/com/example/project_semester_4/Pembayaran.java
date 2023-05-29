@@ -15,18 +15,28 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 
 public class Pembayaran extends AppCompatActivity {
 
     ImageView imgGallery;
+    TextView Judul;
+    private String judul;
 
     private final int GALLERY_REQ_CODE = 1000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pembayaran);
+
+        //judul
+        Judul = (TextView) findViewById(R.id.Judul);
+
+        Bundle extras = getIntent().getExtras();
+        judul = extras.getString("nama_pembayaran");
+        Judul.setText(judul);
 
         // Set the status bar to transparent
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

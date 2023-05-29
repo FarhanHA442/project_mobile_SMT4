@@ -50,7 +50,10 @@ public class adapter_tagihan extends RecyclerView.Adapter<adapter_tagihan.Rincia
         RincianViewHolder.BayarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String namaPembayaran = "Pembayaran 1";
+
                 Intent i = new Intent(context, Pembayaran.class);
+                i.putExtra("nama_pembayaran", namaPembayaran);
                 context.startActivity(i);
             }
         });

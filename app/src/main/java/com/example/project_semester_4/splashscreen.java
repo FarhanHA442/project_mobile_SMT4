@@ -30,7 +30,7 @@ public class splashscreen extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext(), dashboard.class));
+                startActivity(new Intent(getApplicationContext(), login.class));
                 finish();
             }
         }, 3000L); //3000 L = 3 detik

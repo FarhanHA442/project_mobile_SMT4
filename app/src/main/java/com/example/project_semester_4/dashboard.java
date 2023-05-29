@@ -23,6 +23,13 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import  com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,6 +49,7 @@ public class dashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
 
         // Set the status bar to transparent
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -79,7 +87,6 @@ public class dashboard extends AppCompatActivity {
                 "{'name': 'Pembayaran 6'}," + "{'name': 'Pembayaran 7'}," + "{'name': 'Pembayaran 8'}," + "{'name': 'Pembayaran 9'}," + "{'name': 'Pembayaran 10'}," + "{'name': 'Pembayaran 11'}," +
                 "{'name': 'Pembayaran 12'}," + "{'name': 'Pembayaran 13'}," + "{'name': 'Pembayaran 14'}," + "{'name': 'Pembayaran 15'}," + "{'name': 'Pembayaran 16'}]";
 
-
         setData(jsonData);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -98,6 +105,23 @@ public class dashboard extends AppCompatActivity {
     }
 
     void setData(String jsonString){
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        String url = "https://0942-103-109-209-244.ngrok-free.app/api/api_tagihan";
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                    }
+                },
+                new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+
         try {
             JSONArray jsonArray = new JSONArray(jsonString);
             tagihanArrayList = new ArrayList<>();
