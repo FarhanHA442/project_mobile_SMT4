@@ -25,7 +25,6 @@ public class adapter_tagihan extends RecyclerView.Adapter<adapter_tagihan.Rincia
     }
 
     public class RincianViewHolder extends RecyclerView.ViewHolder {
-
         private TextView Nama;
         private Button BayarButton;
 
@@ -47,14 +46,15 @@ public class adapter_tagihan extends RecyclerView.Adapter<adapter_tagihan.Rincia
     @Override
     public void onBindViewHolder(@NonNull adapter_tagihan.RincianViewHolder RincianViewHolder, int i) {
         RincianViewHolder.Nama.setText(dataList.get(i).getNama());
+        String id_tagihan = dataList.get(i).getId_tagihan();
+        String namaPembayaran = dataList.get(i).getNama();
         RincianViewHolder.BayarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String namaPembayaran = "Pembayaran 1";
-
-                Intent i = new Intent(context, Pembayaran.class);
-                i.putExtra("nama_pembayaran", namaPembayaran);
-                context.startActivity(i);
+                Intent intent = new Intent(context, Pembayaran.class);
+                intent.putExtra("id_tagihan", id_tagihan);                intent.putExtra("id_tagihan", id_tagihan);
+                intent.putExtra("nama_tagihan", namaPembayaran);
+                context.startActivity(intent);
             }
         });
     }
@@ -64,5 +64,9 @@ public class adapter_tagihan extends RecyclerView.Adapter<adapter_tagihan.Rincia
         return (dataList != null) ? dataList.size() : 0;
     }
 
+    public void clearData(){
+        dataList.clear();
+        notifyDataSetChanged();
+    }
 
 }

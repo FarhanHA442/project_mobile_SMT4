@@ -13,9 +13,11 @@ import androidx.appcompat.widget.AppCompatButton;
 public class tagihan extends AppCompatActivity {
 
     private String nama;
+    private String id_tagihan;
 
-    public tagihan(String nama) {
+    public tagihan(String nama, String id_tagihan) {
         this.nama = nama;
+        this.id_tagihan = id_tagihan;
     }
 
     public String getNama() {
@@ -25,4 +27,12 @@ public class tagihan extends AppCompatActivity {
     public void setNama(String nama) {
         this.nama = nama;
     }
-    }
+
+    public String getId_tagihan() { return id_tagihan; }
+
+    public void setId_tagihan(String id_tagihan) { this.id_tagihan = id_tagihan;}
+
+}
+
+
+
