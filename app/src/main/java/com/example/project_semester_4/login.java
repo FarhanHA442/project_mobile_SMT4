@@ -41,8 +41,16 @@ public class login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("siswaPreferences", Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        if (!sharedPreferences.getString("nisn", "").equals("")){
+            startActivity(new Intent(getApplicationContext(), dashboard.class));
+        }
+
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        String url = "https://ebe3-103-109-209-244.ngrok-free.app/api/api_siswa";
+        String url = api.api_siswa;
 
         // Set the status bar to transparent
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -51,9 +59,7 @@ public class login extends AppCompatActivity {
             window.setStatusBarColor(Color.BLACK);
         }
 
-        SharedPreferences sharedPreferences = getSharedPreferences("siswaPreferences", Context.MODE_PRIVATE);
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
 
 
         usernameEditText = findViewById(R.id.username_edit);
@@ -74,6 +80,7 @@ public class login extends AppCompatActivity {
                                     JSONObject jsonData = jsonResponse.getJSONObject("data");
                                     if (code.equals("200")) {
                                         editor.putString("nisn", jsonData.getString("nisn"));
+                                        editor.putString("nama", jsonData.getString("nama"));
                                         editor.apply();
                                         Log.d("SharedPreferences", sharedPreferences.getString("nisn", ""));
                                         startActivity(new Intent(getApplicationContext(), dashboard.class));
